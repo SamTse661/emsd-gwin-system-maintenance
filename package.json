@@ -1,0 +1,30 @@
+{
+  "name": "emsd-gwin-system-maintenance",
+  "version": "1.0.0",
+  "description": "Tools for Maintaining GWIN System",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node src",
+    "start:prod": "cd dist && NODE_ENV=production node .",
+    "build": "rm -rf dist && babel src -d dist && cp .env dist && cp -r config dist"
+  },
+  "author": "HKMCI",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.16.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/node": "^7.16.0",
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@babel/preset-env": "^7.16.4",
+    "eslint": "^8.37.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.7.0",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}
