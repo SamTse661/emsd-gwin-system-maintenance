@@ -6,6 +6,11 @@ const port = 8080;
 
 app.post('/system/restartDocker', (req, res) => {
   const { exec } = require('child_process');
+  const { token } = req.body;
+  if (!token || token !== process.env.TOKEN) {
+    res.send('Error');
+    return;
+  }
 
   exec('cd /Users/tsetszchun/Documents/MasterConcept/GWIN/emsd-gwin-dashboard/deploy; docker-compose restart dra_system', (error, stdout, stderr) => {
     if (error) {
@@ -22,9 +27,13 @@ app.post('/system/restartDocker', (req, res) => {
   res.send('restartDocker');
 });
 
-app.post('/system/bashCommand', (req, res) => {
+app.post('/system/systemCall', (req, res) => {
   const { exec } = require('child_process');
-  const { command } = req.body;
+  const { token, command } = req.body;
+  if (!token || token !== process.env.TOKEN) {
+    res.send('Error');
+    return;
+  }
 
   exec(`${command}`, (error, stdout, stderr) => {
     if (error) {
